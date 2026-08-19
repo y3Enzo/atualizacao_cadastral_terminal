@@ -12,8 +12,8 @@ CREATE TABLE IF NOT EXISTS clientes (
 );
 
 CREATE TABLE IF NOT EXISTS acessos (
-    usuario TEXT NOT NULL,
-    email TEXT NOT NULL,
+    usuario TEXT UNIQUE NOT NULL,
+    email TEXT UNIQUE NOT NULL,
     senha TEXT NOT NULL,
     cargo TEXT NOT NULL
 );
