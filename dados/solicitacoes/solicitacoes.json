@@ -1,0 +1,17 @@
+[
+    {
+        "cliente": "",
+        "tipo": "",
+        "dados_antigos": "",
+        "dados_novos": "",
+        "criado_por": "",
+        "historico": [
+            {
+                "acao": "",
+                "usuario": "",
+                "status": ""
+            }
+        ],
+        "status": ""
+    }
+]
