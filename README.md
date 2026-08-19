@@ -22,6 +22,8 @@
 │  ├─ banco/
 │  │  ├─ banco.db
 │  │  └─ schema.sql
+│  ├─ solicitacoes/
+│  │  └─ solicitacoes.json
 │  └─ banco.py
 ├─ .env
 ├─ .env.example
