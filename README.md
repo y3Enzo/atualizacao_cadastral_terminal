@@ -18,8 +18,13 @@
 
 ## Estrutura do Projeto
 ```text
-├─ dados
-│  ├─ banco.db
-│  ├─ banco.py
-│  ├─ schema.sql
+├─ dados/
+│  ├─ banco/
+│  │  ├─ banco.db
+│  │  └─ schema.sql
+│  └─ banco.py
+├─ .env
+├─ .env.example
+├─ .gitignore
+└─ requirements.txt
 ```
