@@ -7,7 +7,7 @@
 | **Alex** | Desenvolvedor | Time de Cadastro | [@alex-software-z09](https://github.com/alex-software-z09) |
 | **Ana** | Líder e Desenvolvedora | Gerente de Negócios | [@anapontess22](https://github.com/anapontess22) |
 | **Enzo** | Líder e Desenvolvedor | Dados | [@y3Enzo](https://github.com/y3Enzo) |
-| **João** | Desenvolvedor | Gerente de Negócios | [](https://github.com/) |
+| **João** | Desenvolvedor | Gerente de Negócios | [@joao-victor155](https://github.com/joao-victor155) |
 | **Jonaldo** | Desenvolvedor | Gerente de Agência | [@jonaldox2000](https://github.com/jonaldox2000) |
 | **Kauan** | Desenvolvedor | Dados | [@kauanjesus2008](https://github.com/kauanjesus2008) |
 | **Neymar** | Desenvolvedor | Time de Cadastro | [](https://github.com/) |
