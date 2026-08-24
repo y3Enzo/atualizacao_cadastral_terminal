@@ -10,7 +10,7 @@
 | **João** | Desenvolvedor | Gerente de Negócios | [@joao-victor155](https://github.com/joao-victor155) |
 | **Jonaldo** | Desenvolvedor | Gerente de Agência | [@jonaldox2000](https://github.com/jonaldox2000) |
 | **Kauan** | Desenvolvedor | Dados | [@kauanjesus2008](https://github.com/kauanjesus2008) |
-| **Neymar** | Desenvolvedor | Time de Cadastro | [](https://github.com/) |
+| **Neymar** | Desenvolvedor | Time de Cadastro | [@almeidaneymar890-blip](https://github.com/almeidaneymar890-blip) |
 | **Samuel** | Desenvolvedor | Gerente de Negócios | [@serpas038-oss](https://github.com/serpas038-oss) |
 | **Vinicius** | Líder e Desenvolvedor | Gerente de Agência | [@Vinigentileza22](https://github.com/Vinigentileza22) |
 | **Vitor** | Líder e Desenvolvedor | Time de Cadastro | [@VHsobreiro](https://github.com/VHsobreiro) |
