@@ -87,8 +87,3 @@ def consultar_historico(indice):
             print("-" * 50)
 
     print("=" * 50 + "\n")
-
-
-if __name__ == "__main__":
-    visualizar_solicitacao(0)
-    consultar_historico(0)
