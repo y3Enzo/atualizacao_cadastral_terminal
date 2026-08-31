@@ -1,11 +1,15 @@
 import json
 import os
+import sys
 from dotenv import load_dotenv
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from dados.solicitacoes.solicitacoes import abrir_solicitacoes
 
 load_dotenv()
 
 JSON_PATH = os.getenv("CAMINHO_SOLICITACOES")
-
 
 def carregar_solicitacoes():
     if not JSON_PATH or not os.path.exists(JSON_PATH):
@@ -13,10 +17,8 @@ def carregar_solicitacoes():
         return []
 
     try:
-        with open(JSON_PATH, "r", encoding="utf-8") as file:
-            solicitacoes = json.load(file)
-            return solicitacoes
-
+        return abrir_solicitacoes()
+    
     except json.JSONDecodeError:
         print("Erro: O arquivo JSON está inválido ou vazio.")
         return []
@@ -52,7 +54,7 @@ def visualizar_solicitacao(indice=0):
     print("=" * 50 + "\n")
 
 
-def consultar_historico(indice=0):
+def consultar_historico(indice):
     solicitacoes = carregar_solicitacoes()
 
     if (
