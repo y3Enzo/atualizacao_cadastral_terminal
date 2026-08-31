@@ -22,6 +22,7 @@ Fora da pasta `banco/`, existe `banco.py`, com funções escritas para consulta 
 - O método estático `obter_conexao()` cria uma conexão e retorna conexão e cursor, necessários para qualquer operação no banco.
 - `criar_banco(cls)` é um classmethod que utiliza a função `obter_conexao()` para sua execução. Este método abre o arquivo `dados/schema.sql`, guarda cada linha em uma variável para depois executar com o cursor do banco e criá-lo.
 - Por fim, `adicionar_cadastros_teste(cls)`, também um classmethod, apenas adiciona uma quantia fixa de 90 clientes de teste com dados aleátorios (não tão aleátorios) ao banco.
+
 Um exemplo de uso da classe `Banco`:
 ```bash
 banco = Banco()
@@ -35,6 +36,7 @@ Já a classe `BuscarNoBanco` possui:
 - O método `buscar_cliente_por_cpf(self, cpf)`, que realiza uma consulta no banco para encontrar um registro com o **exato mesmo** CPF passado como argumento. Esta função retorna um dicionário com os dados encontrados.
 - O método `buscar_acesso(self, usuario, email, senha)`, que realiza uma consulta no banco para encontrar um registro com os **exatos mesmos**: nome de usuário, email e senha passados como argumentos. Esta função possui dois tipos de retorno: um `False` caso encontre nada, ou um dicionário com os dados encontrados.
 - O método `fechar_conexao(self)`, que encerra a conexão com o banco de dados.
+
 Um exemplo de uso da classe `BuscarNoBanco`:
 ```bash
 buscas = BuscarNoBanco(conexao, cursor)
