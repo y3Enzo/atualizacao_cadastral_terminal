@@ -25,11 +25,11 @@
 │  │  └─ solicitacoes.json
 │  └─ banco.py
 ├─ ga/
-│
 ├─ gn/
-│  
 ├─ time_de_cadastro/
-│
+│  ├─ aprovacao_e_integracao_com_banco.py
+│  ├─ devolucao_e_documentacao.py
+│  └─ visualizar_solicitacao.py
 ├─ .env
 ├─ .env.example
 ├─ .gitignore
