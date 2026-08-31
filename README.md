@@ -1,7 +1,6 @@
 # Sistema de Atualização Cadastral no Terminal
 
 ## Colaboradores
-
 | Nome | Função | Equipe | GitHub |
 | :--- | :--- | :--- | :--- |
 | **Alex** | Desenvolvedor | Time de Cadastro | [@alex-software-z09](https://github.com/alex-software-z09) |
@@ -25,6 +24,12 @@
 │  ├─ solicitacoes/
 │  │  └─ solicitacoes.json
 │  └─ banco.py
+├─ ga/
+│
+├─ gn/
+│  
+├─ time_de_cadastro/
+│
 ├─ .env
 ├─ .env.example
 ├─ .gitignore
