@@ -23,7 +23,8 @@
 │  │  └─ schema.sql
 │  ├─ solicitacoes/
 │  │  └─ solicitacoes.json
-│  └─ banco.py
+│  ├─ banco.py
+│  └─ README.md
 ├─ ga/
 ├─ gn/
 ├─ time_de_cadastro/
