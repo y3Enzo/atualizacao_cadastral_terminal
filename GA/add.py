@@ -14,7 +14,7 @@ def ga():
     3 - sair 
         ''')
         
-        while (opcao := input("escolha um opcao: ").strip()) not in ["1" , "2", "3"]: print("opcao invalida! tente novamente" )
+        while (opcao := input("escolha um opcao: ").strip()) not in ["1" , "2", "3"]: print("opcao invalida! tente novament e" )
 
         if opcao == "1":
             if visualizar_solicitacoes_pedente("AGUARDANDO_GA"):
@@ -30,10 +30,7 @@ def ga():
         elif opcao == "2":
             consultar_historico(input("digite o id: " ))
              
-
-                    
-
-
+                   
 # visualiza as solicitações de acordo com o status EX: AGUARDANDO_GA
 def visualizar_solicitacoes_pedente(status_filtro=None):
     solicitacoes = abrir_solicitacoes()
