@@ -24,18 +24,17 @@ def devolver_para_ga(numero_solicitacao):
 
     solicitacao = solicitacoes[indice]
 
-    solicitacao["status"] = "DEVOLVIDA_AO_GA"
-    solicitacao["destino"] = "GA"
+    solicitacao["status"] = "AJUSTE_GA"
 
     solicitacao["historico"].append({
-        "acao": "Devolução para ajuste",
-        "usuario": "GN",
-        "status": "DEVOLVIDA_AO_GA"
+        "acao": "Devolução para ajuste ao GA",
+        "usuario": "usuario",
+        "status": "AJUSTE_GA"
     })
 
     salvar_solicitacao(solicitacoes)
 
-    print("Solicitação devolvida para o GA.")
+    print("Solicitação devolvida para ajuste ao GA.")
 
 
 def devolver_para_gn(numero_solicitacao):
@@ -49,18 +48,17 @@ def devolver_para_gn(numero_solicitacao):
 
     solicitacao = solicitacoes[indice]
 
-    solicitacao["status"] = "DEVOLVIDA_AO_GN"
-    solicitacao["destino"] = "GN"
+    solicitacao["status"] = "AJUSTE_GN"
 
     solicitacao["historico"].append({
-        "acao": "Devolução para ajuste",
-        "usuario": "GA",
-        "status": "DEVOLVIDA_AO_GN"
+        "acao": "Devolução para ajuste ao GN",
+        "usuario": "usuario",
+        "status": "AJUSTE_GN"
     })
 
     salvar_solicitacao(solicitacoes)
 
-    print("Solicitação devolvida para o GN.")
+    print("Solicitação devolvida para ajuste ao GN.")
 
 
 def registrar_documento(numero_solicitacao, documento):
