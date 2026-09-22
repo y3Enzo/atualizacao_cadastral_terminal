@@ -3,6 +3,7 @@ import sys #Bibliotecas
 import os
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))) #Serve para encontrar arquivos de outra pasta
+from dados.solicitacoes import solicitacoes
 
 from dados.banco import Banco, BuscarNoBanco
 
@@ -49,7 +50,7 @@ class SolicitacaoCadastro:
         self.tipo = tipos_disponiveis[opcao] #Se o tipo existir retorna true
         return True
 
-    def criar_solicitacao(self, usuario_logado=None, identificador_cliente=None, opcao_tipo=None):#Serve para preencher as informações que estão vazias e fazer que o código não quebre por falta de informações
+    def criar_solicitacao(self, usuario_logado, identificador_cliente, opcao_tipo):#Serve para preencher as informações que estão vazias e fazer que o código não quebre por falta de informações
         
         if not identificador_cliente: 
             self.status = "erro_cliente_nao_informado"
@@ -74,8 +75,31 @@ class SolicitacaoCadastro:
             "usuario": usuario_logado,
             "status": self.status #Mostra como está o histórico da solicitação
         })
+        
+        cliente_id = self.cliente.get("id") if isinstance(self.cliente, dict) else None
 
-        return True #Retorna verdadeiro
+        dados = {
+    "cliente_id": cliente_id,
+    "tipo": self.tipo,
+    "dados_antigos": self.dados_antigos,
+    "dados_novos": self.dados_novos,
+    "criado_por": self.criado_por,
+    "status": self.status
+}
+        
+        id_gerado = solicitacoes.adicionar_solicitacao(dados)
+           
+    
+
+        if not id_gerado:
+            self.status = "erro_salvar_banco"
+            return False
+
+        # Atualiza o ID do objeto com o ID real retornado do banco
+        self.id = id_gerado
+
+        return True
+    
 
     def to_dict(self):
         return {
@@ -98,7 +122,7 @@ if __name__ == "__main__": #Essa linha significa: "Só rode o código abaixo se 
         s = SolicitacaoCadastro(buscador) #ele abre o sistema, conecta no banco de dados, cria um pedido de mudança de cadastro, valida os dados e mostra o resultado final na tela de forma segura
 
    
-        sucesso = s.criar_solicitacao(identificador_cliente='test0', opcao_tipo="1") #Cria a solicitação e mostra os dados do cliente na tela
+        sucesso = s.criar_solicitacao(usuario_logado='joao', identificador_cliente='test0', opcao_tipo="1") #Cria a solicitação e mostra os dados do cliente na tela
 
         if sucesso:
             print(f"Solicitação {s.id} criada com sucesso!") #Se a solicitação foi criada corretamente aparece esse print na tela
