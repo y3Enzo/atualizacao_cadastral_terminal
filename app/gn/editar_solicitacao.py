@@ -42,4 +42,5 @@ def editar_solicitacao(id_da_solicitacao, acesso):
         return
 
     print("Solicitação não encontrada.")
+    print("Solicitação encontrada.")
     
