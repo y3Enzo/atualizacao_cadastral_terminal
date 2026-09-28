@@ -5,7 +5,11 @@ logger = logging.getLogger(__name__)
 from app.dados import banco
 from app.dados.solicitacoes import solicitacoes
 from app.gn import consultar_solicitacao, criar_solicitacao, editar_solicitacao
+<<<<<<< HEAD
 from app.time_de_cadastro import devolucao_e_documentacao, visualizar_solicitacao, aprovacao_e_integracao_com_banco
+=======
+from app.time_de_cadastro import devolucao_e_documentacao, visualizar_solicitacao
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
 
 banco_obj = banco.Banco()
 conexao, cursor = banco_obj.obter_conexao()
@@ -90,7 +94,11 @@ def verificar_login(usuario, email, senha):
     return acesso
 
 def painel_gn(acesso):
+<<<<<<< HEAD
     print('''usuario
+=======
+    print('''
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
 █▀█ ▄▀█ █ █▄░█ █▀▀ █░░   █▀▀ █▄░█
 █▀▀ █▀█ █ █░▀█ ██▄ █▄▄   █▄█ █░▀█''')
     print('\n')
@@ -111,7 +119,11 @@ def painel_gn(acesso):
                 gn_editar_solicitacao(acesso=acesso)
             case 4:
                 return False
+<<<<<<< HEAD
                 usuario
+=======
+                
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
     except ValueError:
         print('Escreva apenas números')
 
@@ -123,31 +135,53 @@ def gn_criar_solicitacao(acesso):
 
     print('Tipo de atualização')
     print('[1] Renda')
+<<<<<<< HEAD
     print('[2] Patrimônio Veículo')
     print('[3] Patrimônio Imóvel')
     print('[4] Endereço')
 
+=======
+    print('[2] Patrimônio')
+    print('[3] Endereço')
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
 
     try:
         tipo_de_atualizacao = input('Sua opção: ')
         solicitacao_obj.selecionar_tipo(opcao=tipo_de_atualizacao)
+<<<<<<< HEAD
         dados_novos = input('Insira os dados novos: ')
         solicitacao_obj.inserir_dados_novos(dados=dados_novos)
         solicitacao = solicitacao_obj.criar_solicitacao(usuario_logado=acesso)
+=======
+        solicitacao = solicitacao_obj.criar_solicitacao(
+            usuario_logado=acesso,
+            identificador_cliente=identificador_cliente,
+            opcao_tipo=tipo_de_atualizacao)
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
         
         if not solicitacao:
             print(f"Falha ao criar solicitação: {solicitacao_obj.status}") 
             return
         
         print(f"Solicitação {solicitacao_obj.id} criada com sucesso!")
+<<<<<<< HEAD
+=======
+        print(solicitacao_obj.to_dict())
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
         
     except ValueError:
         print('Opção inválida, digite apenas números')
 
 def gn_editar_solicitacao(acesso):
+<<<<<<< HEAD
     id_da_solicitacao = int(input('ID da solicitação: '))
 
     if id_da_solicitacao >= 0:
+=======
+    id_da_solicitacao = input('ID da solicitação: ')
+
+    if int(id_da_solicitacao) >= 0:
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
         if not consultar_solicitacao.consultar_solicitacao(id_da_solicitacao):
             return
         
@@ -298,6 +332,13 @@ def cad_analisar_solicitacao(acesso, id):
             print(f'Solicitação com id {id} não encontrada') 
             return
 
+<<<<<<< HEAD
+=======
+        if not solicitacao:
+            print('Solicitação não encontrada')
+            return
+
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
         match opcao:
             case 1:
                 motivo = input('Texto de efetivação: ')
@@ -312,11 +353,16 @@ def cad_analisar_solicitacao(acesso, id):
                     'usuario': acesso.get('usuario'),
                     'status': 'ATUALIZADO'
                 })
+<<<<<<< HEAD
 
                 aprovacao_e_integracao_com_banco.efetivar_atualizacao(solicitacao)
                 solicitacoes.salvar_solicitacao(lista_de_solicitacoes)
                 devolucao_e_documentacao.registrar_documento(id_solicitacao=id, documento=motivo)
 
+=======
+                solicitacoes.salvar_solicitacao(lista_de_solicitacoes)
+                devolucao_e_documentacao.registrar_documento(numero_solicitacao=id, documento=motivo)
+>>>>>>> 98fac2fc6940495276ced53aa7e148434b8afab0
                 print('Atualização efetivada com sucesso')
             case 2:
                 solicitacao['status'] = 'RECUSADO'

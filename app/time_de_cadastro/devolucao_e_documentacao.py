@@ -24,17 +24,18 @@ def devolver_para_ga(numero_solicitacao):
 
     solicitacao = solicitacoes[indice]
 
-    solicitacao["status"] = "AJUSTE_GA"
+    solicitacao["status"] = "DEVOLVIDA_AO_GA"
+    solicitacao["destino"] = "GA"
 
     solicitacao["historico"].append({
-        "acao": "Devolução para ajuste ao GA",
-        "usuario": "usuario",
-        "status": "AJUSTE_GA"
+        "acao": "Devolução para ajuste",
+        "usuario": "GN",
+        "status": "DEVOLVIDA_AO_GA"
     })
 
     salvar_solicitacao(solicitacoes)
 
-    print("Solicitação devolvida para ajuste ao GA.")
+    print("Solicitação devolvida para o GA.")
 
 
 def devolver_para_gn(numero_solicitacao):
@@ -48,28 +49,30 @@ def devolver_para_gn(numero_solicitacao):
 
     solicitacao = solicitacoes[indice]
 
-    solicitacao["status"] = "AJUSTE_GN"
+    solicitacao["status"] = "DEVOLVIDA_AO_GN"
+    solicitacao["destino"] = "GN"
 
     solicitacao["historico"].append({
-        "acao": "Devolução para ajuste ao GN",
-        "usuario": "usuario",
-        "status": "AJUSTE_GN"
+        "acao": "Devolução para ajuste",
+        "usuario": "GA",
+        "status": "DEVOLVIDA_AO_GN"
     })
 
     salvar_solicitacao(solicitacoes)
 
-    print("Solicitação devolvida para ajuste ao GN.")
+    print("Solicitação devolvida para o GN.")
 
 
-def registrar_documento(id_solicitacao, documento):
+def registrar_documento(numero_solicitacao, documento):
     solicitacoes = abrir_solicitacoes()
-    solicitacao = None
 
-    for solicitacao_ in solicitacoes:
-        if solicitacao_.get('id') != id_solicitacao:
-            continue
+    indice = numero_solicitacao - 1
 
-        solicitacao = solicitacao_
+    if indice < 0 or indice >= len(solicitacoes):
+        print("Solicitação não encontrada.")
+        return
+
+    solicitacao = solicitacoes[indice]
 
     if "documentos" not in solicitacao:
         solicitacao["documentos"] = []
