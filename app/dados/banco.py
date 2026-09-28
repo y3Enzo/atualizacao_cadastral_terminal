@@ -68,7 +68,7 @@ class Banco:
                     endereco = f'Condominio do Bem, Rua {randint(1, 18)}, Casa {randint(1, 60)}'
                     
             cursor.execute('INSERT INTO clientes (nome, cpf, salario, veiculo, endereco, casa_propria) VALUES (?, ?, ?, ?, ?, ?)', (nome, cpf, salario, veiculo, endereco, casa_propria))
-
+        print(f'Solicitação não encontrada.')
         conexao.commit()
         conexao.close()
         print('Cadastros adicionados com sucesso!')

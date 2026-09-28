@@ -50,3 +50,14 @@ def atualizar_status_solicitacao(id_solicitacao, novo_status,usuario_acao, obser
     salvar_solicitacao(solicitacoes)
     print(f"Status da solicitação {id_solicitacao} atualizado para {novo_status}!")
     return True
+
+def obter_proximo_id():
+    lista = abrir_solicitacoes()
+
+    try:
+        id = lista[len(lista) - 1]['id'] + 1
+    except Exception as erro:
+        if erro == IndexError or TypeError:
+            id = 0
+        
+    return id
