@@ -1,0 +1,9 @@
+2026-09-29 17:50:03 - app.main - INFO - Login bem-sucedido do usuário oi
+2026-09-29 17:50:12 - app.gn.criar_solicitacao - INFO - Solicitação com ID 0 criada com sucesso
+2026-09-29 17:54:00 - app.main - INFO - Login bem-sucedido do usuário oi
+2026-09-29 17:54:16 - app.gn.criar_solicitacao - INFO - Solicitação com ID 0 criada com sucesso
+2026-09-29 17:54:33 - app.main - INFO - Login bem-sucedido do usuário oi
+2026-09-29 17:55:09 - app.gn.criar_solicitacao - INFO - Solicitação com ID 1 criada com sucesso
+2026-09-29 17:55:47 - app.main - INFO - Login bem-sucedido do usuário cad
+2026-09-29 17:55:57 - app.dados.banco - INFO - Conexão com o banco de dados obtida com sucesso
+2026-09-29 17:55:57 - app.time_de_cadastro.aprovacao_e_integracao_com_banco - INFO - Solicitação 1 efetivada com sucesso

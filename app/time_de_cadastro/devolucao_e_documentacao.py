@@ -60,19 +60,17 @@ def devolver_para_gn(numero_solicitacao):
 
     salvar_solicitacao(solicitacoes)
 
-    print("Solicitação devolvida para o GN.")
 
-
-def registrar_documento(numero_solicitacao, documento):
+def registrar_documento(id_solicitacao, documento, usuario_logado):
     solicitacoes = abrir_solicitacoes()
+    solicitacao = None
 
-    indice = numero_solicitacao - 1
+    for solicitacao_ in solicitacoes:
+        if solicitacao_.get('id') != id_solicitacao:
+            continue
 
-    if indice < 0 or indice >= len(solicitacoes):
-        print("Solicitação não encontrada.")
-        return
-
-    solicitacao = solicitacoes[indice]
+        solicitacao = solicitacao_
+        break
 
     if "documentos" not in solicitacao:
         solicitacao["documentos"] = []
@@ -81,10 +79,9 @@ def registrar_documento(numero_solicitacao, documento):
 
     solicitacao["historico"].append({
         "acao": "Documento registrado",
-        "usuario": "usuario",
+        "usuario": usuario_logado,
         "status": solicitacao["status"]
     })
 
     salvar_solicitacao(solicitacoes)
-
     print("Documento registrado com sucesso.")

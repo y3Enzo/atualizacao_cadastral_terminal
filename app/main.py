@@ -5,7 +5,7 @@ logger = logging.getLogger(__name__)
 from app.dados import banco
 from app.dados.solicitacoes import solicitacoes
 from app.gn import consultar_solicitacao, criar_solicitacao, editar_solicitacao
-from app.time_de_cadastro import devolucao_e_documentacao, visualizar_solicitacao
+from app.time_de_cadastro import devolucao_e_documentacao, visualizar_solicitacao, aprovacao_e_integracao_com_banco
 
 banco_obj = banco.Banco()
 conexao, cursor = banco_obj.obter_conexao()
@@ -100,6 +100,7 @@ def painel_gn(acesso):
     print('[ 2 ] Consultar solicitações')
     print('[ 3 ] Editar solicitação')
     print('[ 4 ] Encerrar programa')
+
     try:
         opcao = int(input('Sua opção: '))
         match opcao:
@@ -123,16 +124,19 @@ def gn_criar_solicitacao(acesso):
 
     print('Tipo de atualização')
     print('[1] Renda')
-    print('[2] Patrimônio')
-    print('[3] Endereço')
+    print('[2] Patrimônio Veículo')
+    print('[3] Patrimônio Imóvel')
+    print('[4] Endereço')
 
     try:
         tipo_de_atualizacao = input('Sua opção: ')
         solicitacao_obj.selecionar_tipo(opcao=tipo_de_atualizacao)
+
+        dados_novos = input('Dados novos: ')
+        solicitacao_obj.inserir_dados_novos(dados_novos)
+
         solicitacao = solicitacao_obj.criar_solicitacao(
-            usuario_logado=acesso,
-            identificador_cliente=identificador_cliente,
-            opcao_tipo=tipo_de_atualizacao)
+            usuario_logado=acesso)
         
         if not solicitacao:
             print(f"Falha ao criar solicitação: {solicitacao_obj.status}") 
@@ -195,6 +199,7 @@ def ga_analisar_solicitacao(id, acesso):
     print('[ 2 ] Reprovar solicitação')
     print('[ 3 ] Devolver solicitação para ajustes')
     print('[ 4 ] Voltar')
+    
     try:
         opcao = int(input('Sua opção: '))
         if opcao == 4:
@@ -317,7 +322,8 @@ def cad_analisar_solicitacao(acesso, id):
                     'status': 'ATUALIZADO'
                 })
                 solicitacoes.salvar_solicitacao(lista_de_solicitacoes)
-                devolucao_e_documentacao.registrar_documento(numero_solicitacao=id, documento=motivo)
+                devolucao_e_documentacao.registrar_documento(id_solicitacao=id, documento=motivo, usuario_logado=acesso.get('usuario'))
+                aprovacao_e_integracao_com_banco.efetivar_solicitacao(solicitacao=solicitacao)
                 print('Atualização efetivada com sucesso')
             case 2:
                 solicitacao['status'] = 'RECUSADO'
@@ -345,7 +351,7 @@ def cad_analisar_solicitacao(acesso, id):
                             'status': 'AJUSTE_GN'
                         })
                         solicitacoes.salvar_solicitacao(lista_de_solicitacoes)
-                        devolucao_e_documentacao.registrar_documento(numero_solicitacao=id, documento=motivo)
+                        devolucao_e_documentacao.registrar_documento(id_solicitacao=id, documento=motivo, usuario_logado=acesso.get('usuario'))
                         print('Solicitação devolvida para ajustes com sucesso')
                     case 'GA':
                         solicitacao['status'] = 'AJUSTE_GA'
@@ -355,7 +361,7 @@ def cad_analisar_solicitacao(acesso, id):
                             'status': 'AJUSTE_GA'
                         })
                         solicitacoes.salvar_solicitacao(lista_de_solicitacoes)
-                        devolucao_e_documentacao.registrar_documento(numero_solicitacao=id, documento=motivo)
+                        devolucao_e_documentacao.registrar_documento(id_solicitacao=id, documento=motivo, usuario_logado=acesso.get('usuario'))
                         print('Solicitação devolvida para ajustes com sucesso')
                     case _:
                         print('Valor inválido')

@@ -57,11 +57,23 @@ class SolicitacaoCadastro:
         return True
 
     def criar_solicitacao(self, usuario_logado):
+        self.dados_antigos = None
+
+        match self.tipo:
+            case "Renda":
+                self.dados_antigos = self.cliente.get('salario')
+            case "Patrimônio Veículo":
+                self.dados_antigos = self.cliente.get('veiculo')
+            case "Patrimônio Imóvel":
+                self.dados_antigos = self.cliente.get('endereco')
+            case "Endereço":
+                self.dados_antigos = self.cliente.get('casa_propria')
+
         solicitacao = {
             "id": self.id,
             "cliente": self.cliente.get('nome'),
             "tipo": self.tipo,
-            "dados_antigos": self.cliente.get(str(self.tipo)),
+            "dados_antigos": self.dados_antigos,
             "dados_novos": self.dados_novos,
             "criado_por": usuario_logado.get('usuario'),
             "historico": [
