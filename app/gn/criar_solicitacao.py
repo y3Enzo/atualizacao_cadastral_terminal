@@ -61,13 +61,13 @@ class SolicitacaoCadastro:
 
         match self.tipo:
             case "Renda":
-                self.dados_antigos = self.cliente.get('salario')
+                self.dados_antigos = self.cliente['salario']
             case "Patrimônio Veículo":
-                self.dados_antigos = self.cliente.get('veiculo')
+                self.dados_antigos = self.cliente['veiculo']
             case "Patrimônio Imóvel":
-                self.dados_antigos = self.cliente.get('endereco')
+                self.dados_antigos = self.cliente['endereco']
             case "Endereço":
-                self.dados_antigos = self.cliente.get('casa_propria')
+                self.dados_antigos = self.cliente['casa_propria']
 
         solicitacao = {
             "id": self.id,
